@@ -3,7 +3,8 @@ $(document).ready(function() {
 
   function bindEvents() {
     $('body').on('click','button.add',function(e) {
-      addTodo();
+      var todoName = $('input.todo').val();
+      addTodo(todoName);
     });
     $('body').on('click','a.delete',function(e) {
       var $that = $(this);
@@ -15,8 +16,8 @@ $(document).ready(function() {
     });
   }
 
-  function addTodo($that) {
-    var $todo = buildTodo($('input.todo').val());
+  function addTodo(todoName) {
+    var $todo = buildTodo(todoName);
     $todo.appendTo('.todo_list');
   }
 
