@@ -3,8 +3,7 @@ $(document).ready(function() {
 
   function bindEvents() {
     $('body').on('click','button.add',function(e) {
-      var $that = $(this);
-      addTodo($that);
+      addTodo();
     });
     $('body').on('click','a.delete',function(e) {
       var $that = $(this);
@@ -17,7 +16,7 @@ $(document).ready(function() {
   }
 
   function addTodo($that) {
-    var $todo = buildTodo($that.closest('input').val());
+    var $todo = buildTodo($('input.todo').val());
     $todo.appendTo('.todo_list');
   }
 
@@ -30,11 +29,8 @@ $(document).ready(function() {
   }
 
   function buildTodo(todoName) {
-    // Creates an jQueryDOMElement from the todoTemplate.
     var $todo = $(todoTemplate);
-    // Modifies it's text to use the passed in todoName.
     $todo.find('h2').text(todoName);
-    // Returns the jQueryDOMElement to be used elsewhere.
     return $todo;
   }
   bindEvents();
